@@ -10,6 +10,7 @@ public class CanvasUI : Singleton<CanvasUI>
     public Image bg;
 
     public Button start, exit;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +27,17 @@ public class CanvasUI : Singleton<CanvasUI>
         Application.Quit();
     }
 
+    public GameObject Sub;
     public void OpenGame()
     {
-        SceneManager.LoadScene("Game");
+        if (GameDataManager.Instance.playerData.time > 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
+        else
+        {
+            Sub.SetActive(true);
+        }
     }
 
     // Update is called once per frame
